@@ -9,20 +9,36 @@
     <link rel="apple-touch-icon-precomposed" href="icons/touch-icon.png">
 </head>
 <body>
-<div class="view -hidden-" id="view-areas">
-	<header>
-		<a href="#/user" class="header-button header-button-left">Benutzer</a>
-		<h1 style="padding: 0 65px;">LQFB to Go</h1>
-	</header>
-	<div class="scroll">
+<div class="menu-view -hidden-" id="menu">
+    <header>
+        <h1>Menü</h1>
+    </header>
+    <div class="scroll">
+        <section>
+            <ul>
+                <li><a href="#">Übersicht</a></li>
+                <li><a href="#">Themen</a></li>
+                <li><a href="#">Delegationen</a></li>
+                <li><a href="#">Profil</a></li>
+                <li><a href="#">Zeitleiste</a></li>
+            </ul>
+        </section>
+    </div>
+</div>
+<div class="view -hidden- show-menu" id="view-areas">
+    <header>
+        <a href="#/user" class="header-button header-button-left menu"><div></div></a>
+        <h1 style="padding: 0 65px;">LQFB to Go</h1>
+    </header>
+    <div class="scroll">
         <section>
             <div class="fieldset">
-                <label>Themen</label>
-        		<ul class="tableview tableview-links" id="area_list">
-    			</ul>
+            <label>Themen</label>
+                <ul class="tableview tableview-links" id="area_list">
+                </ul>
             </div>
-		</section>
-	</div>
+        </section>
+    </div>
 </div>
 <script src="js/viper.js"></script>
 <script src="js/director.js"></script>
