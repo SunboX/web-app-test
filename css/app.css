@@ -209,7 +209,10 @@ body{
 	padding: 10px;
 }
 .tableview li:first-child {
-	border-top: none;
+    border-top: none;
+}
+.tableview li:last-child {
+    border-bottom: none;
 }
 .tableview-links li{
 	padding: 0;
