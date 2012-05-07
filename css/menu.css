@@ -1,0 +1,97 @@
+
+.menu-view > header {
+    background-color: #b2bbca;
+    background-image:         linear-gradient(top, #2d7dc4, #24629a);
+    background-image:      -o-linear-gradient(top, #2d7dc4, #24629a);
+    background-image:    -moz-linear-gradient(top, #2d7dc4, #24629a);
+    background-image: -webkit-linear-gradient(top, #2d7dc4, #24629a);
+    background-image:     -ms-linear-gradient(top, #2d7dc4, #24629a);
+    border-top: 1px solid #4e96d7;
+    border-bottom: 1px solid #1a4872;
+    padding-left: 10px;
+    background-clip: padding-box;
+    background-size: 1px 100%;
+    background-repeat: repeat-x;
+    
+    height: 44px;
+	line-height: 44px;
+	width: 100%;
+	color: #fff;
+	-webkit-user-select: none;
+	-webkit-touch-callout: none;
+}
+.menu-view > header h1 {
+    padding: 0;
+    text-align: left;
+	font-size: 20px;
+	text-shadow: 0 -1px rgba(0,0,0,.6);
+	margin: 0;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	box-flex: 1;
+}
+.view.show-menu {
+    left: 100%;
+    margin-left: -50px;
+    box-shadow: 25px 0px 20px 30px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 25px 0px 20px 30px rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: 25px 0px 20px 30px rgba(0, 0, 0, 0.6);
+}
+
+.menu-view {
+    position: absolute;
+    left: -50px;
+    width: 100%;
+    height: 100%;
+	display: -webkit-box;
+	display: -moz-box;
+	display: box;
+	-webkit-box-orient: vertical;
+	-moz-box-orient: vertical;
+	box-orient: vertical;
+    padding-left: 50px;
+    background: #5e9ad0;
+}
+.menu-view ul {
+    margin: 0;
+    padding: 0;
+	list-style: none;
+	background-color: #fff;
+	border-bottom: 1px solid #4e96d7;
+}
+.menu-view ul li {
+	display: block;
+    background: #4880b1;
+    border-top: 1px solid #4e96d7;
+    border-bottom: 1px solid #1a4872;
+	padding: 10px;
+	padding: 0;
+	display: -webkit-box;
+	display: -moz-box;
+	display: box;
+	width: 100%;
+}
+.menu-view ul li > a {
+    position: relative;
+    font-size: 15px;
+	line-height: 1.3em;
+	color: #fff;
+	display: block;
+	padding: 10px 5px 10px 10px;
+	text-decoration: none;
+    text-shadow: rgba(0, 0, 0, 0.6) 0px -1px 0;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	display: -webkit-box;
+	display: -moz-box;
+	display: box;
+	width: 100%;
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	box-flex: 1;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}

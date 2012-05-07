@@ -2,6 +2,7 @@
     var body = d.body,
 		$ = function(id){ return d.getElementById(id) },
 		area_list = $('area_list'),
+        menu_view = $('menu-view'),
 		hideAllViews = function(){
 			var views = d.querySelectorAll('.view');
 			for (var i=0, l=views.length; i<l; i++){
@@ -72,6 +73,24 @@
 			outClass.add(wise[0]);
 			inClass.add(wise[1]);
 		},
+        menu = function(opts){
+            var show = opts.show || true,
+                view = opts.view,
+                viewClass = view.classList,
+                menuClass = menu_view.classList,
+                reset = function(){
+    				menu_view.removeEventListener('webkitAnimationEnd', reset, false);
+					viewClass.remove('sliding');
+					menuClass.remove('sliding');
+					viewClass.remove(show ? 'slide-out-to-right' : 'slide-in-from-right');
+					menuClass.remove(show ? 'slide-in-from-left' : 'slide-out-to-left');
+				};
+			viewClass.add('sliding');
+			menuClass.add('sliding');
+			menu_view.addEventListener('webkitAnimationEnd', reset, false);
+            viewClass.add(show ? 'slide-out-to-right' : 'slide-in-from-right');
+    		menuClass.add(show ? 'slide-in-from-left' : 'slide-out-to-left');
+        },
 		tmpl = function(template, data){
 			var t = TEMPLATES[template];
 			if (!t) return;
