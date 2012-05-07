@@ -2,7 +2,7 @@
     var body = d.body,
 		$ = function(id){ return d.getElementById(id) },
 		area_list = $('area_list'),
-        menu_view = $('menu-view'),
+        menu_view = $('menu'),
 		hideAllViews = function(){
 			var views = d.querySelectorAll('.view');
 			for (var i=0, l=views.length; i<l; i++){
@@ -74,22 +74,27 @@
 			inClass.add(wise[1]);
 		},
         menu = function(opts){
-            var show = opts.show || true,
+            var show = !!opts.show,
                 view = opts.view,
                 viewClass = view.classList,
                 menuClass = menu_view.classList,
                 reset = function(){
-    				menu_view.removeEventListener('webkitAnimationEnd', reset, false);
+    				view.removeEventListener('webkitAnimationEnd', reset, false);
+                    if(show){
+                        viewClass.add('show-menu');
+                        menuClass.remove('hidden');
+                    } else {
+                        menuClass.add('hidden');
+                        viewClass.remove('show-menu');
+                    }
 					viewClass.remove('sliding');
-					menuClass.remove('sliding');
-					viewClass.remove(show ? 'slide-out-to-right' : 'slide-in-from-right');
-					menuClass.remove(show ? 'slide-in-from-left' : 'slide-out-to-left');
+					viewClass.remove(show ? 'show-menu-slide-out-to-right' : 'show-menu-slide-in-from-right');
 				};
+            menuClass.remove('hidden');
+            viewClass.remove('show-menu');
 			viewClass.add('sliding');
-			menuClass.add('sliding');
-			menu_view.addEventListener('webkitAnimationEnd', reset, false);
-            viewClass.add(show ? 'slide-out-to-right' : 'slide-in-from-right');
-    		menuClass.add(show ? 'slide-in-from-left' : 'slide-out-to-left');
+			view.addEventListener('webkitAnimationEnd', reset, false);
+            viewClass.add(show ? 'show-menu-slide-out-to-right' : 'show-menu-slide-in-from-right');
         },
 		tmpl = function(template, data){
 			var t = TEMPLATES[template];
@@ -173,11 +178,31 @@
 			w.scrollTo(0, 0);
 		}, false);
 	}
-	
+    
 	tappable('.view > header a.header-button[href]', {
 		noScroll: true,
 		onTap: function(e, target){
+            if(target.classList.contains('menu')) return;
 			location.hash = target.hash;
+		}
+	});
+    
+	tappable('.view > header a.menu', {
+		noScroll: true,
+		onTap: function(e, target){
+			if (!currentView){
+    			currentView = 'areas';
+			}
+            
+            /* Test */
+            if(currentView === 'home'){
+    			currentView = 'areas';
+			}
+            
+            menu({
+				view: $('view-' + currentView),
+                show: menu_view.classList.contains('hidden')
+			});
 		}
 	});
 	
