@@ -4,9 +4,11 @@
 
 .view {
     /* Android ICS BugFix: translate3d = faster */
+    /*
     -webkit-transform: translate3d(0, 0, 0);
     -webkit-backface-visibility: hidden;
     -webkit-perspective: 1000;
+    */
     /* END: Android ICS BugFix: translate3d = faster */
   
     -webkit-animation-timing-function: ease-in-out;

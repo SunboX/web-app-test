@@ -17,6 +17,7 @@
 
 @-webkit-keyframes menu-slideinfromright {
     /* Android ICS BugFix: translate3d = faster */
+    /*
     from {
         -webkit-transform: translate3d(100%, 0, 0);
         margin-left: -50px;
@@ -33,14 +34,30 @@
            -moz-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.6);
         -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.6);
     }
-    
-    /*
-    from { -webkit-transform: translateX(100%); }
-    to { -webkit-transform: translateX(0); }
     */
+    
+    
+    from {
+        -webkit-transform: translateX(100%);
+        margin-left: -50px;
+    
+                box-shadow: 25px 0px 20px 30px rgba(0, 0, 0, 0.6);
+           -moz-box-shadow: 25px 0px 20px 30px rgba(0, 0, 0, 0.6);
+        -webkit-box-shadow: 25px 0px 20px 30px rgba(0, 0, 0, 0.6);
+    }
+    to {
+        -webkit-transform: translateX(0);
+        margin-left: 0px;
+        
+                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.6);
+           -moz-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.6);
+        -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.6);
+    }
+    
 }
 @-webkit-keyframes menu-slideouttoright {
     /* Android ICS BugFix: translate3d = faster */
+    /*
     from {
         -webkit-transform: translate3d(0, 0, 0);
         margin-left: 0px;
@@ -57,9 +74,24 @@
            -moz-box-shadow: 25px 0px 20px 30px rgba(0, 0, 0, 0.6);
         -webkit-box-shadow: 25px 0px 20px 30px rgba(0, 0, 0, 0.6);
     }
-    
-    /*
-    from { -webkit-transform: translateX(0); }
-    to { -webkit-transform: translateX(100%); }
     */
+    
+    
+    from {
+        -webkit-transform: translateX(0);
+        margin-left: 0px;
+        
+                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.6);
+           -moz-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.6);
+        -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.6);
+    }
+    to {
+        -webkit-transform: translateX(100%);
+        margin-left: -50px;
+    
+                box-shadow: 25px 0px 20px 30px rgba(0, 0, 0, 0.6);
+           -moz-box-shadow: 25px 0px 20px 30px rgba(0, 0, 0, 0.6);
+        -webkit-box-shadow: 25px 0px 20px 30px rgba(0, 0, 0, 0.6);
+    }
+    
 }
