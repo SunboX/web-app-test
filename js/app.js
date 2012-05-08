@@ -1,7 +1,8 @@
 (function(w, d){
     var body = d.body,
 		$ = function(id){ return d.getElementById(id) },
-		area_list = $('area_list'),
+		viewport = $('viewport'),
+        area_list = $('area_list'),
         menu_view = $('menu'),
 		hideAllViews = function(){
 			var views = d.querySelectorAll('.view');
@@ -73,28 +74,28 @@
 			outClass.add(wise[0]);
 			inClass.add(wise[1]);
 		},
-        menu = function(opts){
-            var show = !!opts.show,
-                view = opts.view,
-                viewClass = view.classList,
+        menu = function(show){
+            var show = !!show,
+                viewClass = viewport.classList,
                 menuClass = menu_view.classList,
                 reset = function(){
-    				view.removeEventListener('webkitAnimationEnd', reset, false);
+    				viewport.removeEventListener('webkitTransitionEnd', reset, false);
                     if(show){
                         viewClass.add('show-menu');
                         menuClass.remove('hidden');
+        	            viewClass.add('menu-shadow');
                     } else {
                         menuClass.add('hidden');
                         viewClass.remove('show-menu');
                     }
-					viewClass.remove('sliding');
-					viewClass.remove(show ? 'show-menu-slide-out-to-right' : 'show-menu-slide-in-from-right');
+					viewClass.remove('menu-sliding');
+                    viewport.style.left = null;
 				};
             menuClass.remove('hidden');
-            viewClass.remove('show-menu');
-			viewClass.add('sliding');
-			view.addEventListener('webkitAnimationEnd', reset, false);
-            viewClass.add(show ? 'show-menu-slide-out-to-right' : 'show-menu-slide-in-from-right');
+    		viewClass.add('menu-sliding');
+        	viewClass.remove('menu-shadow');
+			viewport.addEventListener('webkitTransitionEnd', reset, false);
+            viewport.style.left = show ? ((window.innerWidth - 50) + 'px') : 0;
         },
 		tmpl = function(template, data){
 			var t = TEMPLATES[template];
@@ -190,19 +191,7 @@
 	tappable('.view > header a.menu', {
 		noScroll: true,
 		onTap: function(e, target){
-			if (!currentView){
-    			currentView = 'areas';
-			}
-            
-            /* Test */
-            if(currentView === 'home'){
-    			currentView = 'areas';
-			}
-            
-            menu({
-				view: $('view-' + currentView),
-                show: menu_view.classList.contains('hidden')
-			});
+            menu(menu_view.classList.contains('hidden'));
 		}
 	});
 	

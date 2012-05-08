@@ -7,7 +7,7 @@
 			var r = new XMLHttpRequest();
 			if (!success) success = function(){};
 			if (!error) error = function(){};
-			if (false /* LQFB API doesn't support CORS by now */ & 'withCredentials' in r){ // CORS
+			if ('withCredentials' in r){ // CORS
 				try {
 					r.open('GET', url + '?' + date(), true);
 					r.onload = function(){

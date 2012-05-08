@@ -12,10 +12,10 @@ body{
 	position: relative;
 	word-wrap: break-word;
 }
-.viewport {
+.app, .viewport {
     overflow: hidden;
 }
-.viewport, .view {
+.app, .viewport, .view {
     position: absolute;
     width: 100%;
 	height: 100%;

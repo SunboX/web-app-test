@@ -19,6 +19,15 @@
 	animation-duration: 350ms;
 }
 
+.menu-sliding {
+    -webkit-transition: left 350ms ease-in-out;
+       -moz-transition: left 350ms ease-in-out;
+            transition: left 350ms ease-in-out;
+}
+.menu-sliding section {
+    pointer-events: none;
+}
+
 .show-menu-slide-out-to-right {
     -webkit-animation-name: menu-slideouttoright;
 	   -moz-animation-name: menu-slideouttoright;

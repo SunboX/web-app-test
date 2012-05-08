@@ -12,7 +12,7 @@
     <link rel="apple-touch-icon-precomposed" href="images/icons/touch-icon.png">
 </head>
 <body>
-<div class="viewport">
+<div class="app">
     <div class="menu-view hidden" id="menu">
         <header>
             <h1>Menü</h1>
@@ -29,19 +29,21 @@
             </section>
         </div>
     </div>
-    <div class="view -hidden- -show-menu-" id="view-areas">
-        <header>
-            <a href="#/menu" class="header-button header-button-left menu"><div></div></a>
-            <h1 style="padding: 0 65px;">LQFB to Go</h1>
-        </header>
-        <div class="scroll">
-            <section>
-                <div class="fieldset">
-                <label>Themen</label>
-                    <ul class="tableview tableview-links" id="area_list">
-                    </ul>
-                </div>
-            </section>
+    <div class="viewport" id="viewport">
+        <div class="view -hidden- -show-menu-" id="view-areas">
+            <header>
+                <a href="#/menu" class="header-button header-button-left menu"><div></div></a>
+                <h1 style="padding: 0 65px;">LQFB to Go</h1>
+            </header>
+            <div class="scroll">
+                <section>
+                    <div class="fieldset">
+                    <label>Themen</label>
+                        <ul class="tableview tableview-links" id="area_list">
+                        </ul>
+                    </div>
+                </section>
+            </div>
         </div>
     </div>
 </div>
