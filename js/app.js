@@ -77,25 +77,28 @@
         menu = function(show){
             var show = !!show,
                 viewClass = viewport.classList,
+                viewStyle = viewport.style,
                 menuClass = menu_view.classList,
                 reset = function(){
     				viewport.removeEventListener('webkitTransitionEnd', reset, false);
+    				viewClass.remove('menu-sliding');
                     if(show){
-                        viewClass.add('show-menu');
+                        viewStyle.left = '100%';
+                        viewStyle.marginLeft = '-50px';
         	            viewClass.add('menu-shadow');
                     } else {
+                        viewStyle.left = 0;
+                        viewStyle.marginLeft = 0;
                         menuClass.add('hidden');
                     }
-					viewClass.remove('menu-sliding');
-                    viewport.style.left = null;
 				};
-            viewClass.remove('show-menu');
-            viewport.style.left = show ? 0 : ((window.innerWidth - 50) + 'px');
+            viewStyle.marginLeft = 0;
+            viewStyle.left = show ? 0 : ((window.innerWidth - 50) + 'px');
             menuClass.remove('hidden');
     		viewClass.add('menu-sliding');
         	viewClass.remove('menu-shadow');
 			viewport.addEventListener('webkitTransitionEnd', reset, false);
-            viewport.style.left = show ? ((window.innerWidth - 50) + 'px') : 0;
+            viewStyle.left = show ? ((window.innerWidth - 50) + 'px') : 0;
         },
 		tmpl = function(template, data){
 			var t = TEMPLATES[template];
