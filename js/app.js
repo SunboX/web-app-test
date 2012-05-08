@@ -89,8 +89,8 @@
 					viewClass.remove('menu-sliding');
                     viewport.style.left = null;
 				};
-            viewport.style.left = show ? 0 : ((window.innerWidth - 50) + 'px');
             viewClass.remove('show-menu');
+            viewport.style.left = show ? 0 : ((window.innerWidth - 50) + 'px');
             menuClass.remove('hidden');
     		viewClass.add('menu-sliding');
         	viewClass.remove('menu-shadow');
