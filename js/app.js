@@ -82,15 +82,15 @@
     				viewport.removeEventListener('webkitTransitionEnd', reset, false);
                     if(show){
                         viewClass.add('show-menu');
-                        menuClass.remove('hidden');
         	            viewClass.add('menu-shadow');
                     } else {
                         menuClass.add('hidden');
-                        viewClass.remove('show-menu');
                     }
 					viewClass.remove('menu-sliding');
                     viewport.style.left = null;
 				};
+            viewport.style.left = show ? 0 : ((window.innerWidth - 50) + 'px');
+            viewClass.remove('show-menu');
             menuClass.remove('hidden');
     		viewClass.add('menu-sliding');
         	viewClass.remove('menu-shadow');
