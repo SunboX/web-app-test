@@ -1,8 +1,8 @@
 
 .menu-view > header {
-    background-color: #b2bbca;
+    background-color: #24629a;
     background-image:         linear-gradient(top, #2d7dc4, #24629a);
-    background-image:      -o-linear-gradient(top, #2d7dc4, #24629a);
+    background-image:      -o-linear-gradient(top, #2d7dc4, #c4639a);
     background-image:    -moz-linear-gradient(top, #2d7dc4, #24629a);
     background-image: -webkit-linear-gradient(top, #2d7dc4, #24629a);
     background-image:     -ms-linear-gradient(top, #2d7dc4, #24629a);
@@ -33,10 +33,23 @@
 	-moz-box-flex: 1;
 	box-flex: 1;
 }
+
+#menu-hide-area {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 50px;
+    z-index: 999;
+}
+
 .viewport.menu-shadow {
             box-shadow: 25px 0px 20px 30px rgba(0, 0, 0, 0.6);
        -moz-box-shadow: 25px 0px 20px 30px rgba(0, 0, 0, 0.6);
     -webkit-box-shadow: 25px 0px 20px 30px rgba(0, 0, 0, 0.6);
+}
+.viewport.disable-events .view {
+    pointer-events: none;
 }
 
 .menu-view {
@@ -60,9 +73,6 @@
 }
 .menu-view ul li {
 	display: block;
-    background: #4880b1;
-    border-top: 1px solid #4e96d7;
-    border-bottom: 1px solid #1a4872;
 	padding: 10px;
 	padding: 0;
 	display: -webkit-box;
@@ -90,4 +100,12 @@
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
+    background: #4880b1;
+    border-top: 1px solid #4e96d7;
+    border-bottom: 1px solid #1a4872;
+}
+.menu-view ul li > a.tappable-active {
+    background: #24629a;
+    border-top: 1px solid #153a5c;
+    border-bottom: 1px solid #153a5c;
 }

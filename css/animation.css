@@ -27,14 +27,3 @@
 .menu-sliding section {
     pointer-events: none;
 }
-
-.show-menu-slide-out-to-right {
-    -webkit-animation-name: menu-slideouttoright;
-	   -moz-animation-name: menu-slideouttoright;
-	        animation-name: menu-slideouttoright;
-}
-.show-menu-slide-in-from-right {
-    -webkit-animation-name: menu-slideinfromright;
-	   -moz-animation-name: menu-slideinfromright;
-	        animation-name: menu-slideinfromright;
-}

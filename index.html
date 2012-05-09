@@ -20,17 +20,18 @@
         <div class="scroll">
             <section>
                 <ul>
-                    <li><a href="#">Übersicht</a></li>
-                    <li><a href="#">Themen</a></li>
-                    <li><a href="#">Delegationen</a></li>
-                    <li><a href="#">Profil</a></li>
-                    <li><a href="#">Zeitleiste</a></li>
+                    <li><a href="#overview">Übersicht</a></li>
+                    <li><a href="#topics">Themen</a></li>
+                    <li><a href="#contacts">Delegationen</a></li>
+                    <li><a href="#profile">Profil</a></li>
+                    <li><a href="#timeline">Zeitleiste</a></li>
                 </ul>
             </section>
         </div>
+        <div id="menu-hide-area"></div>
     </div>
     <div class="viewport" id="viewport">
-        <div class="view -hidden- -show-menu-" id="view-areas">
+        <div class="view hidden" id="view-areas">
             <header>
                 <a href="#/menu" class="header-button header-button-left menu"><div></div></a>
                 <h1 style="padding: 0 65px;">LQFB to Go</h1>
@@ -38,7 +39,7 @@
             <div class="scroll">
                 <section>
                     <div class="fieldset">
-                    <label>Themen</label>
+                        <label>Themen</label>
                         <ul class="tableview tableview-links" id="area_list">
                         </ul>
                     </div>
@@ -47,13 +48,15 @@
         </div>
     </div>
 </div>
-<script src="js/viper.js"></script>
+<script src="js/device.js"></script>
 <script src="js/director.js"></script>
 <script src="js/tappable.js"></script>
 <script src="js/amplify.store.js"></script>
 <script src="js/lqfb_api.js"></script>
 <script src="js/mustache.js"></script>
 <script src="js/templates.js"></script>
+<script src="js/app/core.js"></script>
+<script src="js/app/menu.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>
