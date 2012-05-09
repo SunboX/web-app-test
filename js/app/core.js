@@ -3,7 +3,7 @@
     var body = d.body,
         $ = function(id){ return d.getElementById(id) },
 		viewport = $('viewport'),
-        area_list = $('area_list'),
+        overview_list = $('overview_list'),
 		hideAllViews = function(){
     		var views = d.querySelectorAll('.view');
 			for (var i=0, l=views.length; i<l; i++){
@@ -40,7 +40,7 @@
 			outClass.add(wise[0]);
 			inClass.add(wise[1]);
 		},
-		slide = function(opts){
+    	slide = function(opts){
     		var inEl = opts.in,
 				outEl = opts.out,
 				inClass = inEl.classList,
@@ -74,6 +74,16 @@
 			outClass.add(wise[0]);
 			inClass.add(wise[1]);
 		},
+    	changeHard = function(opts){
+    		var inEl = opts.in,
+				outEl = opts.out,
+				inClass = inEl.classList,
+				outClass = outEl.classList,
+				fn = opts.fn;
+			inClass.remove('hidden');
+			outClass.add('hidden');
+			if (fn) fn.apply();
+		},
 		tmpl = function(template, data){
     		var t = TEMPLATES[template];
 			if (!t) return;
@@ -89,51 +99,19 @@
 				alert('Server is currently unavailable. Please try again later.');
 				throw e;
 			}
-		},
-        currentView = null,
-        routes = {
-            '/': function(){
-                var view = $('view-areas');
-                if (!currentView){
-                    hideAllViews();
-                    view.classList.remove('hidden');
-                } else if (currentView == 'about'){
-                    flip({
-                        in: view,
-                        out: $('view-' + currentView),
-                        direction: 'anticlockwise'
-                    });
-                } else if (currentView != 'home'){
-                    slide({
-                        in: view,
-                        out: $('view-' + currentView),
-                        direction: 'ltr'
-                    });
-                }
-                currentView = 'home';
-            }
-        };
+		};
     
     w.App = {
         $: $,
         viewport: viewport,
-        area_list: area_list,
 		hideAllViews: hideAllViews,
 		flip: flip,
-		slide: slide,
+    	slide: slide,
+    	changeHard: changeHard,
     	tmpl: tmpl,
 		errors: errors,
-        routes: routes
+        menuOpen: false
     };
-	
-	Router(routes).configure({
-		on: function(){
-			amplify.store('lqfb-togo-hash', location.hash);
-		},
-		notfound: function(){
-			location.hash = '/';
-		}
-	}).init(amplify.store('lqfb-togo-hash') || '/');
 	
 	w.addEventListener('pagehide', function(){
 		amplify.store('lqfb-togo-hash', location.hash);
@@ -205,67 +183,67 @@
 		}
 	});
 	
-	var areasScroll = d.querySelector('#view-areas .scroll'),
-		areasScrollSection = areasScroll.querySelector('section'),
-		markupAreas = function(data, i){
+	var overviewScroll = d.querySelector('#overview .scroll'),
+		areasScrollSection = overviewScroll.querySelector('section'),
+		markupOverview = function(data, i){
 			var html = '';
 			var a = d.createElement('a');
 			data.result.forEach(function(item){
 				item.i = i++;
-				html += tmpl('area-list-item', item);
+				html += tmpl('overview-list-item', item);
 			});
 			return html;
 		},
-		loadAreas = function(data){
-			area_list.innerHTML = markupAreas(data);
+		loadOverview = function(data){
+			overview_list.innerHTML = markupOverview(data);
 		},
-		loadingAreas = false,
-		reloadAreas = function(opts){
-			if (loadingAreas) return;
+		loadingOverview = false,
+		reloadOverview = function(opts){
+			if (loadingOverview) return;
 			if (!opts) opts = {};
-			var news = amplify.store('hacker-news');
+			var news = amplify.store('lqfb-overview');
 			if (news){
 				var delay = opts.delay;
 				if (delay){
-					loadingAreas = true;
-					area_list.innerHTML = '';
-					areasScroll.classList.add('loading');
+					loadingOverview = true;
+					overview_list.innerHTML = '';
+					overviewScroll.classList.add('loading');
 					setTimeout(function(){
-						loadingAreas = false;
-						areasScroll.classList.remove('loading');
-						loadAreas(news);
+						loadingOverview = false;
+						overviewScroll.classList.remove('loading');
+						loadOverview(news);
 					}, delay);
 				} else {
-					loadAreas(news);
+					loadOverview(news);
 				}
 			} else {
-				loadingAreas = true;
-				area_list.innerHTML = '';
-				areasScroll.classList.add('loading');
+				loadingOverview = true;
+				overview_list.innerHTML = '';
+				overviewScroll.classList.add('loading');
 				lqfb_api.areas(function(data){
-					loadingAreas = false;
-					areasScroll.classList.remove('loading');
+					loadingOverview = false;
+					overviewScroll.classList.remove('loading');
 					if (!data || data.error){
 						errors.serverError();
 						return;
 					}
-					amplify.store('lqfb-areas', data, {
+					amplify.store('lqfb-overview', data, {
 						expires: 1000*60*5 // 5 minutes
 					});
-					loadAreas(data);
+					loadOverview(data);
 				}, function(e){
-					loadingAreas = false;
+					loadingOverview = false;
 					errors.connectionError(e);
 				});
 			}
 		};
 	
-	reloadAreas();
+	reloadOverview();
     
 	// Auto-reload news for some specific situations...
 	w.addEventListener('pageshow', function(){
 		setTimeout(function(){
-			if (currentView == 'home' && area_list.innerHTML && !amplify.store('hacker-news')){
+			if (w.App.currentView == 'home' && area_list.innerHTML && !amplify.store('hacker-news')){
 				reloadAreas();
 			}
 		}, 1);

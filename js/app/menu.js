@@ -1,7 +1,8 @@
-(function(w){
-    var platform = w.Device.platform.name,
-        viewport = w.App.viewport,
-        menu_view = w.App.$('menu'),
+(function(w, d){
+    var App = w.App,
+        platform = w.Device.platform.name,
+        viewport = App.viewport,
+        menu_view = App.$('menu'),
         menu_timeout,
         menu = function(show){
             clearTimeout(menu_timeout);
@@ -23,6 +24,8 @@
                         viewClass.remove('android-fix');
                     }
 				};
+                
+            App.menuOpen = show;
             
             menuClass.remove('hidden');
             viewClass.add('disable-events');
@@ -38,11 +41,11 @@
             }, 300);
         }
     
-    tappable('.view > header a.menu', {
+    tappable('.view header a.menu', {
     	noScroll: true,
         inactiveClassDelay: 350,
 		onTap: function(e, target){
-            menu(menu_view.classList.contains('hidden'));
+            menu(!App.menuOpen);
 		}
 	});
     
@@ -57,7 +60,8 @@
     	noScroll: true,
         inactiveClassDelay: 350,
 		onTap: function(e, target){
-            alert(target.hash);
+            d.location.hash = target.hash;
+            setTimeout(function(){ menu(false); }, 100);
 		}
 	});
     
@@ -70,4 +74,4 @@
         
     }, false);
     
-})(window);
+})(window, document);
