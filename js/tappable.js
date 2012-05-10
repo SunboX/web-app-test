@@ -1,3 +1,10 @@
+/*
+ * Copyright 2012, Lim Chee Aun < http://github.com/cheeaun/hnmobile >
+ * Licensed under the MIT License.
+ * http://cheeaun.mit-license.org/
+ *
+ */
+
 (function(root, factory){
     // Set up Tappable appropriately for the environment.
 	if (typeof define === 'function' && define.amd){

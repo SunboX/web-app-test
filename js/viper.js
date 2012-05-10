@@ -1,4 +1,12 @@
-// A good deal of code inspired by the awesome MooTools framework (http://mootools.net/)
+/*
+ * Copyright 2012, Lim Chee Aun < http://github.com/cheeaun/hnmobile >
+ * Licensed under the MIT License.
+ * http://cheeaun.mit-license.org/
+ *
+ * A good deal of code inspired by the awesome MooTools framework (http://mootools.net/)
+ *
+ */
+
 (function (window, undefined) {
 
 function assignEvents(array, obj) {

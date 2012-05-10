@@ -1,55 +1,25 @@
-(function(w){
-    
-	var date = function(){
-			return +new Date();
-		},
-		req = function(url, success, error){
-			var r = new XMLHttpRequest();
-			if (!success) success = function(){};
-			if (!error) error = function(){};
-			if ('withCredentials' in r){ // CORS
-				try {
-					r.open('GET', url + '?' + date(), true);
-					r.onload = function(){
-						try {
-							success(JSON.parse(this.responseText));
-						} catch(e){
-							error(e);
-						}
-					};
-					r.onerror = error;
-					r.send();
-				} catch (e){
-					error(e);
-				}
-			} else {
-				var s = document.createElement('script'),
-					callback = 'callback' + date();
-				w[callback] = success;
-				s.onerror = error;
-				s.src = url + '?callback=' + callback;
-				document.body.appendChild(s);
-			}
-		};
-	
-	var lqfb_api = {
-		
-		url: 'http://apitest.liquidfeedback.org:25520/',
-		
-		areas: function(success, error){
-			req(lqfb_api.url + 'area' , success, error);
-		},
-		
-		initiativesByArea: function(area_id, success, error){
-			req(lqfb_api.url + 'initiative/?area_id=' + area_id, success, error);
-		},
+/*
+ * Copyright 2012, André Fiedler < http://twitter.com/sonnenkiste >
+ * licensed under the MIT license.
+ *
+ * Inspired by HN mobile by Lim Chee Aun < http://github.com/cheeaun/hnmobile > and
+ *          by Bombay-Crushed by the SaftigeKumquat team < http://github.com/SaftigeKumquat/Bombay-Crushed >
+ */
 
-		initiative: function(id, success, error){
-			req(lqfb_api.url + 'initiative/?id=' + id, success, error);
-		}
+(function(w){
+
+	var lqfb_api = w.lqfb_api;
 		
+	lqfb_api.areas = function(success, error){
+		lqfb_api.query('/area', null, null, success, error);
 	};
-	
-	w.lqfb_api = lqfb_api;
+		
+	lqfb_api.initiativesByArea = function(area_id, success, error){
+		lqfb_api.query('/initiative', { area_id: area_id }, null, success, error);
+	};
+
+	lqfb_api.initiative = function(id, success, error){
+		lqfb_api.query('/initiative', { id: id }, null, success, error);
+	};
 	
 })(window);
