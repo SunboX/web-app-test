@@ -176,7 +176,7 @@ body{
 .box {
     margin: 8px;
 }
-.box > .tableview {
+.box > .panel, .box > .tableview {
     -webkit-border-radius: 6px;
     border: 1px solid #b86200;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .25), 0 1px 0 rgba(255, 255, 255, 0.25);
@@ -196,12 +196,21 @@ body{
     text-shadow: 0 -1px rgba(0,0,0,.4);
     padding: 5px;
 }
-.tableview {
+.panel, .tableview {
     margin: 0;
 	padding: 0;
 	list-style: none;
 	background-color: #fff;
 	border-bottom: 1px solid #e0e0e0;
+}
+.panel {
+    display: block;
+    border-top: 1px solid #c9c9c9;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 10px;
+    font-size: 15px;
+    line-height: 1.3em;
+	color: #000;
 }
 .tableview li {
     display: block;
@@ -328,4 +337,10 @@ body{
     background: -ms-linear-gradient(top, #2a7ac2 0%,#2566a0 100%); /* IE10+ */
     background: linear-gradient(top, #2a7ac2 0%,#2566a0 100%); /* W3C */
 }
-
+.view > .scroll p.foot-label {
+    margin: 11px 10px 0;
+	font-size: 14px;
+	color: #7f4100;
+	text-shadow: 0 1px #ffb15e;
+	text-align: center;
+}

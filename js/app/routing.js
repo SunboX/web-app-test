@@ -108,6 +108,22 @@
                     });
                 }
                 App.currentView = 'timeline';
+            },
+            '/about': function(){
+                var view = $('about');
+                if (!App.currentView){
+                    hideAllViews();
+                    view.classList.remove('hidden');
+                } else if (App.currentView != 'about'){
+                    var fn = App.menuOpen ? changeHard : slide;
+                    
+                    fn({
+                        in: view,
+                        out: $(App.currentView),
+                        direction: 'ltr'
+                    });
+                }
+                App.currentView = 'about';
             }
         };
     
