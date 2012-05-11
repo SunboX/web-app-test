@@ -62,13 +62,52 @@
                 App.currentView = 'topics';
             },
             '/contacts': function(){
-                alert('contacts');
+                var view = $('contacts');
+                if (!App.currentView){
+                    hideAllViews();
+                    view.classList.remove('hidden');
+                } else if (App.currentView != 'contacts'){
+                    var fn = App.menuOpen ? changeHard : slide;
+                    
+                    fn({
+                        in: view,
+                        out: $(App.currentView),
+                        direction: 'ltr'
+                    });
+                }
+                App.currentView = 'contacts';
             },
             '/profile': function(){
-                alert('profile');
+                var view = $('profile');
+                if (!App.currentView){
+                    hideAllViews();
+                    view.classList.remove('hidden');
+                } else if (App.currentView != 'profile'){
+                    var fn = App.menuOpen ? changeHard : slide;
+                    
+                    fn({
+                        in: view,
+                        out: $(App.currentView),
+                        direction: 'ltr'
+                    });
+                }
+                App.currentView = 'profile';
             },
             '/timeline': function(){
-                alert('timeline');
+                var view = $('timeline');
+                if (!App.currentView){
+                    hideAllViews();
+                    view.classList.remove('hidden');
+                } else if (App.currentView != 'timeline'){
+                    var fn = App.menuOpen ? changeHard : slide;
+                    
+                    fn({
+                        in: view,
+                        out: $(App.currentView),
+                        direction: 'ltr'
+                    });
+                }
+                App.currentView = 'timeline';
             }
         };
     
