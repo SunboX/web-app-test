@@ -21,10 +21,15 @@ body{
     height: 100%;
     
 	display: -webkit-box;
-	display:    -moz-box;
+    display:    -moz-box;
+    display:     -ms-box;
+    display:      -o-box;
 	display:         box;
+    
 	-webkit-box-orient: vertical;
-	   -moz-box-orient: vertical;
+       -moz-box-orient: vertical;
+        -ms-box-orient: vertical;
+         -o-box-orient: vertical;
 	        box-orient: vertical;
 }
 .view.hidden {
@@ -37,6 +42,7 @@ body{
     background-image:    -moz-linear-gradient(top, #b0bccd, #889bb3 50%, #8195af 51%, #6d84a2);
     background-image: -webkit-linear-gradient(top, #eeeeee, #d4dade 50%, #cdd2d4 51%, #9a9ea1);
     background-image:     -ms-linear-gradient(top, #b0bccd, #889bb3 50%, #8195af 51%, #6d84a2);
+    
     background-clip: padding-box;
     background-size: 1px 100%;
     background-repeat: repeat-x;
@@ -52,7 +58,8 @@ body{
 }
 .header-button {
     display: -webkit-box;
-	display:    -moz-box;
+    display:     -ms-box;
+    display:      -o-box;
 	display:         box;
     
     position: absolute;
@@ -61,7 +68,9 @@ body{
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
     
     -webkit-box-sizing: border-box;
-	   -moz-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+         -o-box-sizing: border-box;
 	        box-sizing: border-box;
             
 	height: 30px;
@@ -87,12 +96,27 @@ body{
 
     color: #fff;
     background: none;
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #2c7abf), color-stop(0.5, #2567a1), color-stop(0.5, #236299), color-stop(1, #236299));
     
-    
+    background: #2c7abf; /* Old browsers */
+    background:    -moz-linear-gradient(top, #2c7abf 0%, #236299 50%, #2567a1 50%, #236299 100%); /* FF3.6+ */
+    background: -webkit-linear-gradient(top, #2c7abf 0%,#236299 50%,#2567a1 50%,#236299 100%); /* Chrome10+,Safari5.1+ */
+    background:      -o-linear-gradient(top, #2c7abf 0%,#236299 50%,#2567a1 50%,#236299 100%); /* Opera 11.10+ */
+    background:     -ms-linear-gradient(top, #2c7abf 0%,#236299 50%,#2567a1 50%,#236299 100%); /* IE10+ */
+    background:         linear-gradient(top, #2c7abf 0%,#236299 50%,#2567a1 50%,#236299 100%); /* W3C */
+
     -webkit-border-radius: 6px;
+       -moz-border-radius: 6px;
+        -ms-border-radius: 6px;
+         -o-border-radius: 6px;
+            border-radius: 6px;
+    
     border: 1px solid #153b5c;
+    
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .25), 0 1px 0 rgba(255, 255, 255, 0.25);
+       -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .25), 0 1px 0 rgba(255, 255, 255, 0.25);
+        -ms-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .25), 0 1px 0 rgba(255, 255, 255, 0.25);
+         -o-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .25), 0 1px 0 rgba(255, 255, 255, 0.25);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .25), 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 .header-button-left {
 	left: 8px;
@@ -114,8 +138,13 @@ body{
     background: url("../images/menu.png") center no-repeat;
 }
 .header-button.tappable-active {
-    background: none;
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #2f5e87), color-stop(0.5, #234a6b), color-stop(0.5, #224766), color-stop(1, #1e5280));
+    background: #2f5e87; /* Old browsers */
+    background:    -moz-linear-gradient(top, #2f5e87 0%, #224766 50%, #234a6b 50%, #1e5280 100%); /* FF3.6+ */
+    background: -webkit-linear-gradient(top, #2f5e87 0%,#224766 50%,#234a6b 50%,#1e5280 100%); /* Chrome10+,Safari5.1+ */
+    background:      -o-linear-gradient(top, #2f5e87 0%,#224766 50%,#234a6b 50%,#1e5280 100%); /* Opera 11.10+ */
+    background:     -ms-linear-gradient(top, #2f5e87 0%,#224766 50%,#234a6b 50%,#1e5280 100%); /* IE10+ */
+    background:         linear-gradient(top, #2f5e87 0%,#224766 50%,#234a6b 50%,#1e5280 100%); /* W3C */
+
     border: 1px solid #112433;
 }
 .view > header h1 {
@@ -146,11 +175,15 @@ body{
 	        box-flex: 1;
     
     display: -webkit-box;
-	display:    -moz-box;
+    display:    -moz-box;
+    display:     -ms-box;
+    display:      -o-box;
 	display:         box;
     
 	-webkit-box-orient: vertical;
-	   -moz-box-orient: vertical;
+       -moz-box-orient: vertical;
+        -ms-box-orient: vertical;
+         -o-box-orient: vertical;
 	        box-orient: vertical;
     
 	height: 100%;
@@ -160,10 +193,13 @@ body{
 .view > .scroll > section {
     
     -webkit-box-flex: 1;
-	   -moz-box-flex: 1;
+       -moz-box-flex: 1;
+        -ms-box-flex: 1;
+         -o-box-flex: 1;
 	        box-flex: 1;
     
 	overflow: auto;
+    
 	-webkit-overflow-scrolling: touch;
     
     height: 100%;
@@ -178,13 +214,25 @@ body{
 }
 .box > .panel, .box > .tableview {
     -webkit-border-radius: 6px;
+       -moz-border-radius: 6px;
+        -ms-border-radius: 6px;
+         -o-border-radius: 6px;
+            border-radius: 6px;
+            
     border: 1px solid #b86200;
+    
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .25), 0 1px 0 rgba(255, 255, 255, 0.25);
+       -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .25), 0 1px 0 rgba(255, 255, 255, 0.25);
+        -ms-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .25), 0 1px 0 rgba(255, 255, 255, 0.25);
+         -o-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .25), 0 1px 0 rgba(255, 255, 255, 0.25);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .25), 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 .box > label {
     
     display: -webkit-box;
     display:    -moz-box;
+    display:     -ms-box;
+    display:      -o-box;
 	display:         box;
     
     font-size: 15px;
@@ -226,9 +274,13 @@ body{
 }
 .tableview-links li{
 	padding: 0;
+    
 	display: -webkit-box;
-	display:    -moz-box;
+    display:    -moz-box;
+    display:     -ms-box;
+    display:      -o-box;
 	display:         box;
+    
 	width: 100%;
 }
 .tableview-links li > a {
@@ -264,14 +316,28 @@ body{
     margin-top: -9px;
     color: #fff;
     border: #fff 2px solid;
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #2c7abf), color-stop(0.5, #2567a1), color-stop(0.5, #236299), color-stop(1, #236299));
     
+    background: #2c7abf; /* Old browsers */
+    background:    -moz-linear-gradient(top, #2c7abf 0%, #236299 50%, #2567a1 50%, #236299 100%); /* FF3.6+ */
+    background: -webkit-linear-gradient(top, #2c7abf 0%,#236299 50%,#2567a1 50%,#236299 100%); /* Chrome10+,Safari5.1+ */
+    background:      -o-linear-gradient(top, #2c7abf 0%,#236299 50%,#2567a1 50%,#236299 100%); /* Opera 11.10+ */
+    background:     -ms-linear-gradient(top, #2c7abf 0%,#236299 50%,#2567a1 50%,#236299 100%); /* IE10+ */
+    background:         linear-gradient(top, #2c7abf 0%,#236299 50%,#2567a1 50%,#236299 100%); /* W3C */
+
     -webkit-border-radius: 10px;
+       -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+         -o-border-radius: 10px;
+            border-radius: 10px;
+    
     text-align: center;
     vertical-align: middle;
-    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.80);
-    -moz-box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.80);
+    
     -webkit-box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.80);
+       -moz-box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.80);
+        -ms-box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.80);
+         -o-box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.80);
+            box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.80);
 }
 .tableview-links li > a > .disclosure.arrow {
     font-size: 18px;
@@ -306,7 +372,8 @@ body{
 
 	   -moz-border-radius: 8px;
 	-webkit-border-radius: 8px;
-	     -o-border-radius: 8px;
+         -o-border-radius: 8px;
+        -ms-border-radius: 8px;
 	        border-radius: 8px;
             
     border-top-color: #4e96d7;
@@ -315,12 +382,11 @@ body{
     border-left-color: #2d7dc5;
     
     background: #2d7cc4; /* Old browsers */
-    background: -moz-linear-gradient(top, #2d7cc4 0%, #1a4973 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#2d7cc4), color-stop(100%,#1a4973)); /* Chrome,Safari4+ */
+    background:    -moz-linear-gradient(top, #2d7cc4 0%, #1a4973 100%); /* FF3.6+ */
     background: -webkit-linear-gradient(top, #2d7cc4 0%,#1a4973 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #2d7cc4 0%,#1a4973 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #2d7cc4 0%,#1a4973 100%); /* IE10+ */
-    background: linear-gradient(top, #2d7cc4 0%,#1a4973 100%); /* W3C */
+    background:      -o-linear-gradient(top, #2d7cc4 0%,#1a4973 100%); /* Opera 11.10+ */
+    background:     -ms-linear-gradient(top, #2d7cc4 0%,#1a4973 100%); /* IE10+ */
+    background:         linear-gradient(top, #2d7cc4 0%,#1a4973 100%); /* W3C */
 }
 .view > .scroll > section button.tappable-active {
             
@@ -330,12 +396,11 @@ body{
     border-left-color: #166cb9;
     
     background: #2a7ac2; /* Old browsers */
-    background: -moz-linear-gradient(top, #2a7ac2 0%, #2566a0 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#2a7ac2), color-stop(100%,#2566a0)); /* Chrome,Safari4+ */
+    background:    -moz-linear-gradient(top, #2a7ac2 0%, #2566a0 100%); /* FF3.6+ */
     background: -webkit-linear-gradient(top, #2a7ac2 0%,#2566a0 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #2a7ac2 0%,#2566a0 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #2a7ac2 0%,#2566a0 100%); /* IE10+ */
-    background: linear-gradient(top, #2a7ac2 0%,#2566a0 100%); /* W3C */
+    background:      -o-linear-gradient(top, #2a7ac2 0%,#2566a0 100%); /* Opera 11.10+ */
+    background:     -ms-linear-gradient(top, #2a7ac2 0%,#2566a0 100%); /* IE10+ */
+    background:         linear-gradient(top, #2a7ac2 0%,#2566a0 100%); /* W3C */
 }
 .view > .scroll p.foot-label {
     margin: 11px 10px 0;
