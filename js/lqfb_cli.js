@@ -14,7 +14,9 @@
         port: 25520
     };
     
-    var lqfb_api = {};
+    var lqfb_api = {
+        baseurl: baseurl
+    };
     
     var typeOf = function(item){
         if (item == null) return 'null';

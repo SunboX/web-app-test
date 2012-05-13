@@ -27,4 +27,8 @@
     
     };
     
+    w.Device[w.Device.name] = true;
+    w.Device[w.Device.name + parseInt(w.Device.version, 10)] = true;
+    w.Device.platform[w.Device.platform.name] = true;
+    
 })(window, document);

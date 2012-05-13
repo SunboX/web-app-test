@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/keyframes.css?v2">
     <link rel="stylesheet" href="css/animation.css?v2">
     <link rel="stylesheet" href="css/menu.css?v2">
+    <link rel="stylesheet" href="css/overlay.css?v2">
     <link rel="stylesheet" href="css/app.css?v2">
     <link rel="shortcut icon" href="images/icons/favicon.ico">
     <link rel="apple-touch-icon-precomposed" href="images/icons/touch-icon.png">
@@ -83,7 +84,7 @@
                                 </a>
                             </li>
                         </ul>
-                        <button>Neues Thema anlegen</button>
+                        <button class="button">Neues Thema anlegen</button>
                     </div>
                 </section>
             </div>
@@ -164,9 +165,30 @@
                             </li>
                         </ul>
                     </div>
-    		        <p class="foot-label">Umsetzung bei André Fiedler.<br>Nicht verbunden mit Liquid Feedback, der Public Software Group e.V. oder der Piraten Partei.</p>
+        	        <p class="foot-label">Umsetzung bei André Fiedler.<br>Nicht verbunden mit Liquid Feedback, der Public Software Group e.V. oder der Piraten Partei.<br/><br/><span id="server-info"></span></p>
                 </section>
             </div>
+        </div>
+        <div class="view hidden" id="not-logged-in">
+            <header>
+                <a href="#/menu" class="header-button header-button-left menu"><div></div></a>
+                <h1 style="padding: 0 65px;">Anmeldung</h1>
+            </header>
+            <div class="scroll">
+                <section class="center">
+                    <div class="box">
+                        <button class="button" style="width: 200px;">Anmelden</button>
+                    </div>
+        	        <p class="foot-label">Um diese Funktion nutzen zu können, müssen Sie sich anmelden.</p>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="overlay hidden" id="overlay">
+        <div class="window hidden" id="login-window">
+            <input type="text" name="api-key" class="api-key" placeholder="API-Key eingeben"></input>
+            <button class="button login">Anmelden</button>
+            <button class="button cancel subtle">Abbrechen</button>
         </div>
     </div>
 </div>
@@ -180,9 +202,13 @@
 <script src="js/mustache.js"></script>
 <script src="js/templates.js"></script>
 <script src="js/app/core.js"></script>
+<script src="js/app/state.js"></script>
+<script src="js/app/navigation.js"></script>
 <script src="js/app/routing.js"></script>
 <script src="js/app/menu.js"></script>
+<script src="js/app/actions/not-logged-in.js"></script>
 <script src="js/app/actions/overview.js"></script>
+<script src="js/app/actions/about.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

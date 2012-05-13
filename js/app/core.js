@@ -11,86 +11,6 @@
     var body = d.body,
         $ = function(id){ return d.getElementById(id) },
 		viewport = $('viewport'),
-		hideAllViews = function(){
-    		var views = d.querySelectorAll('.view');
-			for (var i=0, l=views.length; i<l; i++){
-				views[i].classList.add('hidden');
-			}
-		},
-		flip = function(opts){
-    		var inEl = opts.in,
-				outEl = opts.out,
-				inClass = inEl.classList,
-				outClass = outEl.classList,
-				direction = opts.direction,
-				fn = opts.fn,
-				flipWise = {
-					clockwise: ['flip-out-to-left', 'flip-in-from-left'],
-					anticlockwise: ['flip-out-to-right', 'flip-in-from-right']
-				},
-				wise = flipWise[direction],
-				reset = function(){
-					inEl.removeEventListener('webkitAnimationEnd', reset, false);
-					body.classList.remove('viewport-flip');
-					outClass.add('hidden');
-					inClass.remove('flip');
-					outClass.remove('flip');
-					outClass.remove(wise[0]);
-					inClass.remove(wise[1]);
-					if (fn) fn.apply();
-				};
-			body.classList.add('viewport-flip');
-			inClass.remove('hidden');
-			outClass.add('flip');
-			inClass.add('flip');
-			inEl.addEventListener('webkitAnimationEnd', reset, false);
-			outClass.add(wise[0]);
-			inClass.add(wise[1]);
-		},
-    	slide = function(opts){
-    		var inEl = opts.in,
-				outEl = opts.out,
-				inClass = inEl.classList,
-				outClass = outEl.classList,
-				direction = opts.direction,
-				fn = opts.fn,
-				slideWise = {
-					rtl: ['slide-out-to-left', 'slide-in-from-right'],
-					ltr: ['slide-out-to-right', 'slide-in-from-left']
-				}
-				wise = slideWise[direction],
-				reset = function(){
-					inEl.removeEventListener('webkitAnimationEnd', reset, false);
-					outClass.add('hidden');
-					outClass.remove('sliding');
-					inClass.remove('sliding');
-					outClass.remove(wise[0]);
-					inClass.remove(wise[1]);
-					inHeader.classList.remove('transparent');
-					outHeader.classList.remove('transparent');
-					if (fn) fn.apply();
-				};
-			var inHeader = inEl.querySelector('header'),
-				outHeader = outEl.querySelector('header');
-			inClass.remove('hidden');
-			outClass.add('sliding');
-			inClass.add('sliding');
-			inEl.addEventListener('webkitAnimationEnd', reset, false);
-			inHeader.classList.add('transparent');
-			outHeader.classList.add('transparent');
-			outClass.add(wise[0]);
-			inClass.add(wise[1]);
-		},
-    	changeHard = function(opts){
-    		var inEl = opts.in,
-				outEl = opts.out,
-				inClass = inEl.classList,
-				outClass = outEl.classList,
-				fn = opts.fn;
-			inClass.remove('hidden');
-			outClass.add('hidden');
-			if (fn) fn.apply();
-		},
 		tmpl = function(template, data){
     		var t = TEMPLATES[template];
 			if (!t) return;
@@ -111,14 +31,10 @@
     w.App = {
         $: $,
         viewport: viewport,
-		hideAllViews: hideAllViews,
-		flip: flip,
-    	slide: slide,
-    	changeHard: changeHard,
     	tmpl: tmpl,
-		errors: errors,
-        menuOpen: false
+		errors: errors
     };
+    
 	
 	w.addEventListener('pagehide', function(){
 		amplify.store('lqfb-togo-hash', location.hash);

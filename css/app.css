@@ -32,16 +32,16 @@ body{
          -o-box-orient: vertical;
 	        box-orient: vertical;
 }
-.view.hidden {
+.hidden {
 	left: -9999px;
 }
 .view > header {
     background-color: #b2bbca;
-    background-image:         linear-gradient(top, #eeeeee, #abb0b3 50%, #abb0b3 51%, #9a9ea1);
-    background-image:      -o-linear-gradient(top, #b0bccd, #889bb3 50%, #8195af 51%, #6d84a2);
-    background-image:    -moz-linear-gradient(top, #b0bccd, #889bb3 50%, #8195af 51%, #6d84a2);
+    background-image:         linear-gradient(top, #eeeeee, #d4dade 50%, #cdd2d4 51%, #9a9ea1);
+    background-image:      -o-linear-gradient(top, #eeeeee, #d4dade 50%, #cdd2d4 51%, #9a9ea1);
+    background-image:    -moz-linear-gradient(top, #eeeeee, #d4dade 50%, #cdd2d4 51%, #9a9ea1);
     background-image: -webkit-linear-gradient(top, #eeeeee, #d4dade 50%, #cdd2d4 51%, #9a9ea1);
-    background-image:     -ms-linear-gradient(top, #b0bccd, #889bb3 50%, #8195af 51%, #6d84a2);
+    background-image:     -ms-linear-gradient(top, #eeeeee, #d4dade 50%, #cdd2d4 51%, #9a9ea1);
     
     background-clip: padding-box;
     background-size: 1px 100%;
@@ -99,10 +99,10 @@ body{
     
     background: #2c7abf; /* Old browsers */
     background:    -moz-linear-gradient(top, #2c7abf 0%, #236299 50%, #2567a1 50%, #236299 100%); /* FF3.6+ */
-    background: -webkit-linear-gradient(top, #2c7abf 0%,#236299 50%,#2567a1 50%,#236299 100%); /* Chrome10+,Safari5.1+ */
-    background:      -o-linear-gradient(top, #2c7abf 0%,#236299 50%,#2567a1 50%,#236299 100%); /* Opera 11.10+ */
-    background:     -ms-linear-gradient(top, #2c7abf 0%,#236299 50%,#2567a1 50%,#236299 100%); /* IE10+ */
-    background:         linear-gradient(top, #2c7abf 0%,#236299 50%,#2567a1 50%,#236299 100%); /* W3C */
+    background: -webkit-linear-gradient(top, #2c7abf 0%, #236299 50%, #2567a1 50%, #236299 100%); /* Chrome10+,Safari5.1+ */
+    background:      -o-linear-gradient(top, #2c7abf 0%, #236299 50%, #2567a1 50%, #236299 100%); /* Opera 11.10+ */
+    background:     -ms-linear-gradient(top, #2c7abf 0%, #236299 50%, #2567a1 50%, #236299 100%); /* IE10+ */
+    background:         linear-gradient(top, #2c7abf 0%, #236299 50%, #2567a1 50%, #236299 100%); /* W3C */
 
     -webkit-border-radius: 6px;
        -moz-border-radius: 6px;
@@ -211,6 +211,24 @@ body{
 
 .box {
     margin: 8px;
+}
+.view > .scroll > section.center {
+    width: 100%;
+    
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-pack: center;
+    -moz-box-align: center;
+    
+    display: box;
+    box-orient: horizontal;
+    box-pack: center;
+    box-align: center;
 }
 .box > .panel, .box > .tableview {
     -webkit-border-radius: 6px;
@@ -353,7 +371,7 @@ body{
 	pointer-events: none;
 }
 
-.view > .scroll > section button {
+.button {
 	font-size: 18px;
     color: #fff;
     text-shadow: 0 -1px rgba(0,0,0,.6);
@@ -388,7 +406,35 @@ body{
     background:     -ms-linear-gradient(top, #2d7cc4 0%,#1a4973 100%); /* IE10+ */
     background:         linear-gradient(top, #2d7cc4 0%,#1a4973 100%); /* W3C */
 }
-.view > .scroll > section button.tappable-active {
+.button.subtle {
+    border-top-color: #d6d6d6;
+    border-right-color: #c5c5c5;
+    border-bottom-color: #707070;
+    border-left-color: #c4c4c4;
+    
+    background: #c2c2c2; /* Old browsers */
+    background:    -moz-linear-gradient(top, #c2c2c2 0%, #737373 100%); /* FF3.6+ */
+    background: -webkit-linear-gradient(top, #c2c2c2 0%, #737373 100%); /* Chrome10+,Safari5.1+ */
+    background:      -o-linear-gradient(top, #c2c2c2 0%, #737373 100%); /* Opera 11.10+ */
+    background:     -ms-linear-gradient(top, #c2c2c2 0%, #737373 100%); /* IE10+ */
+    background:         linear-gradient(top, #c2c2c2 0%, #737373 100%); /* W3C */
+}
+/*
+.button.primary {
+    border-top-color: #4f97d6;
+    border-right-color: #328ede;
+    border-bottom-color: #20598a;
+    border-left-color: #5591c5;
+    
+    background: #2d7cc4; /* Old browsers * /
+    background:    -moz-linear-gradient(top, #60a2db 0%, #3d668c 100%); /* FF3.6+ * /
+    background: -webkit-linear-gradient(top, #60a2db 0%, #3d668c 100%); /* Chrome10+,Safari5.1+ * /
+    background:      -o-linear-gradient(top, #60a2db 0%, #3d668c 100%); /* Opera 11.10+ * /
+    background:     -ms-linear-gradient(top, #60a2db 0%, #3d668c 100%); /* IE10+ * /
+    background:         linear-gradient(top, #60a2db 0%, #3d668c 100%); /* W3C * /
+}
+*/
+.button.tappable-active {
             
     border-top-color: #2e81cc;
     border-right-color: #166cb9;

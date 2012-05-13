@@ -10,124 +10,129 @@
     
     var App = w.App,
         $ = App.$,
-        hideAllViews = w.App.hideAllViews,
-        flip = App.flip,
-        slide = App.slide,
-        changeHard = App.changeHard,
+        hideAllViews = Navigation.hideAllViews,
+        flip = Navigation.flip,
+        slide = Navigation.slide,
+        changeHard = Navigation.changeHard,
         routes = {
             '/': function(){
                 var view = $('overview');
-                if (!App.currentView){
+                if (!Navigation.currentView){
                     hideAllViews();
                     view.classList.remove('hidden');
-                } else if (App.currentView != 'overview'){
+                } else if (Navigation.currentView != 'overview'){
                     slide({
                         in: view,
-                        out: $(App.currentView),
+                        out: $(Navigation.currentView),
                         direction: 'ltr'
                     });
                 }
-                App.currentView = 'overview';
+                Navigation.currentView = 'overview';
             },
             '/overview': function(){
+                if(!State.session_key()) {
+                	State.sendToLogin('overview');
+            		return;
+            	}
+                
                 var view = $('overview');
-                if (!App.currentView){
+                if (!Navigation.currentView){
                     hideAllViews();
                     view.classList.remove('hidden');
-                } else if (App.currentView != 'overview'){
-                    var fn = App.menuOpen ? changeHard : slide;
+                } else if (Navigation.currentView != 'overview'){
+                    var fn = Navigation.menuOpen ? changeHard : slide;
                         
                     fn({
                         in: view,
-                        out: $(App.currentView),
+                        out: $(Navigation.currentView),
                         direction: 'ltr'
                     });
                 }
-                App.currentView = 'overview';
+                Navigation.currentView = 'overview';
             },
             '/topics': function(){
                 var view = $('topics');
-                if (!App.currentView){
+                if (!Navigation.currentView){
                     hideAllViews();
                     view.classList.remove('hidden');
-                } else if (App.currentView != 'topics'){
-                    var fn = App.menuOpen ? changeHard : slide;
+                } else if (Navigation.currentView != 'topics'){
+                    var fn = Navigation.menuOpen ? changeHard : slide;
                     
                     fn({
                         in: view,
-                        out: $(App.currentView),
+                        out: $(Navigation.currentView),
                         direction: 'ltr'
                     });
                 }
-                App.currentView = 'topics';
+                Navigation.currentView = 'topics';
             },
             '/contacts': function(){
                 var view = $('contacts');
-                if (!App.currentView){
+                if (!Navigation.currentView){
                     hideAllViews();
                     view.classList.remove('hidden');
-                } else if (App.currentView != 'contacts'){
-                    var fn = App.menuOpen ? changeHard : slide;
+                } else if (Navigation.currentView != 'contacts'){
+                    var fn = Navigation.menuOpen ? changeHard : slide;
                     
                     fn({
                         in: view,
-                        out: $(App.currentView),
+                        out: $(Navigation.currentView),
                         direction: 'ltr'
                     });
                 }
-                App.currentView = 'contacts';
+                Navigation.currentView = 'contacts';
             },
             '/profile': function(){
                 var view = $('profile');
-                if (!App.currentView){
+                if (!Navigation.currentView){
                     hideAllViews();
                     view.classList.remove('hidden');
-                } else if (App.currentView != 'profile'){
-                    var fn = App.menuOpen ? changeHard : slide;
+                } else if (Navigation.currentView != 'profile'){
+                    var fn = Navigation.menuOpen ? changeHard : slide;
                     
                     fn({
                         in: view,
-                        out: $(App.currentView),
+                        out: $(Navigation.currentView),
                         direction: 'ltr'
                     });
                 }
-                App.currentView = 'profile';
+                Navigation.currentView = 'profile';
             },
             '/timeline': function(){
                 var view = $('timeline');
-                if (!App.currentView){
+                if (!Navigation.currentView){
                     hideAllViews();
                     view.classList.remove('hidden');
-                } else if (App.currentView != 'timeline'){
-                    var fn = App.menuOpen ? changeHard : slide;
+                } else if (Navigation.currentView != 'timeline'){
+                    var fn = Navigation.menuOpen ? changeHard : slide;
                     
                     fn({
                         in: view,
-                        out: $(App.currentView),
+                        out: $(Navigation.currentView),
                         direction: 'ltr'
                     });
                 }
-                App.currentView = 'timeline';
+                Navigation.currentView = 'timeline';
             },
             '/about': function(){
                 var view = $('about');
-                if (!App.currentView){
+                if (!Navigation.currentView){
                     hideAllViews();
                     view.classList.remove('hidden');
-                } else if (App.currentView != 'about'){
-                    var fn = App.menuOpen ? changeHard : slide;
+                } else if (Navigation.currentView != 'about'){
+                    var fn = Navigation.menuOpen ? changeHard : slide;
                     
                     fn({
                         in: view,
-                        out: $(App.currentView),
+                        out: $(Navigation.currentView),
                         direction: 'ltr'
                     });
                 }
-                App.currentView = 'about';
+                Navigation.currentView = 'about';
             }
         };
     
-    w.App.routes = routes;
+    Navigation.routes = routes;
 	
 	Router(routes).configure({
 		on: function(){
