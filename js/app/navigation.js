@@ -107,6 +107,13 @@
         hideLoginWindow = function(){
             hideOverlay();
             loginWindow.classList.add('hidden');
+        },
+        showLastSecure = function(){
+            changeHard({
+                in: $(Navigation.lastSecureView),
+                out: $(Navigation.currentView)
+            });
+            Navigation.currentView = Navigation.lastSecureView;
         };
     
     w.Navigation = {
@@ -118,6 +125,7 @@
         hideOverlay: hideOverlay,
         showLoginWindow: showLoginWindow,
         hideLoginWindow: hideLoginWindow,
+        showLastSecure: showLastSecure,
         menuOpen: false
     };
 	
@@ -133,6 +141,7 @@
 		}
 		amplify.store('lqfb-togo-scrolltops', hackerScrollTops);
 	}, false);
+    
 	w.addEventListener('pageshow', function(){
 		var hash = amplify.store('lqfb-togo-hash'),
 			lqfbScrollTops = amplify.store('lqfb-togo-scrolltops');

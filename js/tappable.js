@@ -17,11 +17,10 @@
 		factory(root, root.document);
 	}
 }(this, function(w, d){
-
-	var matchesSelector = function(node, selector){
-			var root = d.documentElement,
-				matches = root.matchesSelector || root.mozMatchesSelector || root.webkitMatchesSelector || root.msMatchesSelector;
-			return matches.call(node, selector);
+	var root = d.documentElement,
+		matchesSel = root.matchesSelector || root.mozMatchesSelector || root.webkitMatchesSelector || root.msMatchesSelector,
+        matchesSelector = function(node, selector){
+			return matchesSel.call(node, selector);
 		},
 		closest = function(node, selector){
 			var matches = false;

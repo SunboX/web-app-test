@@ -8,14 +8,15 @@
 
 (function(w, d){
     
-    var $ = App.$, html = '';
+    var $ = App.$;
     
-    lqfb_api.query('/info', {}, function(res) {
-		html += 'Server: ' + lqfb_api.baseurl.host + ':' + lqfb_api.baseurl.port + '<br/>';
-		html += 'Core Version: ' + res.core_version + '<br/>';
-		html += 'API Version:  ' + res.api_version + '<br/><br/>';
-        
-        $('server-info').innerHTML = html;
-	});
+    tappable('button.logout', {
+        noScroll: true,
+        onTap: function(e, target){
+            State.session_key(null);
+            State.user_id(null);
+            State.sendToLogin(Navigation.currentView);
+        }
+    });
     
 })(window, document);

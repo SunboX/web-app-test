@@ -24,6 +24,8 @@
                     var view = $('not-logged-in'),
                         title = 'Anmeldung';
                         
+                    Navigation.lastSecureView = currentView;
+                        
                     if(currentView === 'overview') title = 'Übersicht';
                     
                     view.querySelectorAll('header h1')[0].innerHTML = title;

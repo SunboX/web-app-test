@@ -19,13 +19,12 @@
     };
     
     var typeOf = function(item){
-        if (item == null) return 'null';
-        if (item.$family != null) return item.$family();
+        if (item === null) return 'null';
         
         if (item.nodeName){
             if (item.nodeType == 1) return 'element';
             if (item.nodeType == 3) return (/\S/).test(item.nodeValue) ? 'textnode' : 'whitespace';
-        } else if (typeof item.length == 'number'){
+        } else if (typeof item.length == 'number' && typeof item !== 'string'){
             if (item.callee) return 'arguments';
             if ('item' in item) return 'collection';
         }
@@ -60,7 +59,7 @@
     /**
      * Build up the request options for the given path.
      */
-    var buildRequestOptions = function(path, args, state) {
+    var buildRequestOptions = function(path, args) {
         var options = {
             protocol: 'http',
             host    : baseurl.host,
@@ -82,8 +81,8 @@
         args = args || {};
         args.nc = +new Date();
         
-        if(state && state.session_key()) {
-            args.session_key = state.session_key();
+        if(State && State.session_key()) {
+            args.session_key = State.session_key();
         }
         options.path += '?' + toQueryString(args);
         
@@ -100,20 +99,22 @@
      * @param handler The function to handle the JSON object returned by the API Server in response to the query.
      * @return The ClientResponseObject given by http(s).request.
      */
-    lqfb_api.query = function(path, args, state, success, error) {
+    lqfb_api.query = function(path, args, success, error, method) {
         var r = new XMLHttpRequest(), options;
-		if (!success) success = function(){};
-		if (!error) error = function(){};
-		if ('withCredentials' in r){ // CORS
+        if(!method) method = 'GET';
+		if(!success) success = function(){};
+		if(!error) error = function(){};
+		if('withCredentials' in r){ // CORS
 			try {
-                options = buildRequestOptions(path, args, state);
-				r.open('GET', options.protocol + '://' + options.host + ':' + options.port + options.path, true);
+                options = buildRequestOptions(path, args);
+				r.open(method, options.protocol + '://' + options.host + ':' + options.port + options.path, true);
 				r.onload = function(){
 					try {
 						var response = JSON.parse(this.responseText);
                         if(!response.status || response.status !== 'ok') {
                             if(response.status && response.status === 'forbidden') {
-                                state.sendToLogin();
+                                console.log('STATUS: forbidden');
+                                State.sendToLogin();
                             }
                             console.warn('STATUS: ' + response.status + ' - Error String: "' + response.error + '" - Query was: ' + path + ' ' + JSON.stringify(args));
                         }

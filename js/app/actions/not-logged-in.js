@@ -24,7 +24,23 @@
     tappable('#login-window button.login', {
         noScroll: true,
         onTap: function(e, target){
-            alert('not implemented yet');
+            
+            var key = $('login-api-key').value;
+            
+            lqfb_api.query('/session', { key: key }, function(res){
+                if(res.status === 'not found'){
+                    alert('Der API-Key ' + key + ' ist ungültig!');
+                } else {
+                    
+                    State.session_key(res.session_key);
+                    
+                    lqfb_api.query('/info', {}, function(res) {
+                        State.user_id(res.current_member_id);
+                        Navigation.showLastSecure();
+                    });
+                }
+            }, function(e){ alert(e); }, 'POST');
+            
             Navigation.hideLoginWindow();
         }
     });
